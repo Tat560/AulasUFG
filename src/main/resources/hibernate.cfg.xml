@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!--
+    Configuración de Hibernate para AulasUFG (MySQL / MariaDB).
+    Valores pensados para XAMPP: servidor local, puerto 3306, usuario root sin clave.
+    Si tu MySQL usa otros datos, no edites este archivo: define las variables de
+    entorno DB_URL, DB_USER, DB_PASSWORD (y DB_DIALECT) y HibernateUtil las usará en su lugar.
+-->
+<hibernate-configuration>
+    <session-factory>
+        <!-- Conexión JDBC -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/aulas_ufg?createDatabaseIfNotExist=true&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+
+        <!-- Pool de conexiones básico incluido en Hibernate (suficiente para una app de escritorio) -->
+        <property name="hibernate.connection.pool_size">5</property>
+
+        <!-- Dialecto SQL para MariaDB (XAMPP). Con MySQL real usar org.hibernate.dialect.MySQLDialect
+             (o definir la variable de entorno DB_DIALECT). -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MariaDBDialect</property>
+        <!-- MariaDB se anuncia como "5.5.5" ante el driver de MySQL; indicamos la versión real (XAMPP = 10.4) -->
+        <property name="jakarta.persistence.database-major-version">10</property>
+        <property name="jakarta.persistence.database-minor-version">4</property>
+
+        <!-- Crea/actualiza las tablas a partir de las entidades al iniciar -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Muestra en consola el SQL generado (útil para depurar) -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- Entidades mapeadas: descomentar cuando existan las clases (rama feature/entidades) -->
+        <!-- <mapping class="edu.ufg.aulas.entidades.Usuario"/> -->
+        <!-- <mapping class="edu.ufg.aulas.entidades.Aula"/> -->
+    </session-factory>
+</hibernate-configuration>
