@@ -1,22 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
-<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15.0" prefWidth="560.0"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="edu.ufg.aulas.controladores.HomeController">
-    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
-    <Label text="Registro de aulas"/>
-    <TextField fx:id="txtNombre" promptText="Nombre del aula"/>
-    <TextField fx:id="txtEdificio" promptText="Edificio"/>
-    <ComboBox fx:id="cmbPlanta" promptText="Planta"/>
-    <TextField fx:id="txtCapacidad" promptText="Capacidad"/>
-    <ComboBox fx:id="cmbTipoAula" promptText="Tipo de aula"/>
-    <TextField fx:id="txtResponsable" promptText="Responsable"/>
-    <ComboBox fx:id="cmbEstado" promptText="Estado"/>
-    <HBox spacing="10">
-        <Button text="Guardar" onAction="#guardar"/>
-        <Button text="Limpiar" onAction="#limpiar"/>
-        <Button text="Cerrar sesión" onAction="#cerrarSesion"/>
-    </HBox>
+   <padding>
+      <Insets bottom="25.0" left="30.0" right="30.0" top="25.0" />
+   </padding>
+   <children>
+      <HBox alignment="CENTER_LEFT" spacing="10.0">
+         <children>
+            <Label text="Registro de aulas" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <Label fx:id="lblUsuario" HBox.hgrow="ALWAYS" maxWidth="Infinity" alignment="CENTER_RIGHT" />
+            <Button text="Cerrar sesión" onAction="#cerrarSesion" />
+         </children>
+      </HBox>
+      <GridPane hgap="12.0" vgap="12.0">
+         <columnConstraints>
+            <ColumnConstraints minWidth="110.0" />
+            <ColumnConstraints hgrow="ALWAYS" />
+         </columnConstraints>
+         <children>
+            <Label text="Nombre" GridPane.rowIndex="0" />
+            <TextField fx:id="txtNombre" promptText="Ej. B-204" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Edificio" GridPane.rowIndex="1" />
+            <TextField fx:id="txtEdificio" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label text="Planta" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cmbPlanta" maxWidth="Infinity" promptText="Seleccione" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <Label text="Capacidad" GridPane.rowIndex="3" />
+            <TextField fx:id="txtCapacidad" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <Label text="Tipo de aula" GridPane.rowIndex="4" />
+            <ComboBox fx:id="cmbTipoAula" maxWidth="Infinity" promptText="Seleccione" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+            <Label text="Responsable" GridPane.rowIndex="5" />
+            <TextField fx:id="txtResponsable" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+            <Label text="Estado" GridPane.rowIndex="6" />
+            <ComboBox fx:id="cmbEstado" maxWidth="Infinity" promptText="Seleccione" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER_RIGHT" spacing="10.0">
+         <children>
+            <Button text="Limpiar" onAction="#limpiar" />
+            <Button text="Guardar" onAction="#guardar" defaultButton="true" />
+         </children>
+      </HBox>
+   </children>
 </VBox>

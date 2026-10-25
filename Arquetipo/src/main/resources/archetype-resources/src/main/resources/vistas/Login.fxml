@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="12" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="edu.ufg.aulas.controladores.LoginController">
+    <padding><Insets top="30" right="30" bottom="30" left="30"/></padding>
+    <Label text="Iniciar sesión"/>
+    <TextField fx:id="txtCorreo" promptText="Correo"/>
+    <PasswordField fx:id="txtClave" promptText="Clave"/>
+    <Button text="Ingresar" onAction="#ingresar"/>
+    <Label fx:id="lblMensaje"/>
+</VBox>
