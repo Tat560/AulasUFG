@@ -2,22 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package edu.ufg.aulas.util;
-
-import java.io.FileDescriptor;
-import java.io.FileOutputStream;
-
-import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 /**
  *
- * @author jorge
+ * @author Walter Valladares
  */
-public final class HibernateUtil {
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
 
@@ -26,44 +22,15 @@ public final class HibernateUtil {
 
     public static synchronized SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
-            sessionFactory = construirSessionFactory();
+            sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         }
         return sessionFactory;
     }
 
-    private static SessionFactory construirSessionFactory() {
-        try {
-            return new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-        } catch (Exception ex) {
-            System.err.println("Error al crear la SessionFactory: " + ex.getMessage());
-            throw new ExceptionInInitializerError(ex);
-        }
-    }
-
-    public static boolean probarConexion() {
-        try (Session sesion = getSessionFactory().openSession()) {
-            Integer resultado = sesion.createNativeQuery("SELECT 1", Integer.class).getSingleResult();
-            return resultado != null && resultado == 1;
-        } catch (Exception ex) {
-            System.err.println("No se pudo conectar a la base de datos: " + ex.getMessage());
-            return false;
-        }
-    }
-
-    public static synchronized void cerrar() {
-        if (sessionFactory != null && !sessionFactory.isClosed()) {
+    public static void cerrar() {
+        if (sessionFactory != null) {
             sessionFactory.close();
+            sessionFactory = null;
         }
-        sessionFactory = null;
-    }
-
-    public static void main(String[] args) {
-        PrintStream salida = new PrintStream(new FileOutputStream(FileDescriptor.out), true, StandardCharsets.UTF_8);
-        boolean ok = probarConexion();
-        salida.println(ok
-                ? "Conexión a la base de datos aulas_ufg: OK"
-                : "Conexión a la base de datos aulas_ufg: FALLÓ");
-        cerrar();
-        System.exit(ok ? 0 : 1);
     }
 }

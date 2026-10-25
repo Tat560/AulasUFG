@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="edu.ufg.aulas.controladores.HomeController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    <Label text="Registro de aulas"/>
+    <TextField fx:id="txtNombre" promptText="Nombre del aula"/>
+    <TextField fx:id="txtEdificio" promptText="Edificio"/>
+    <ComboBox fx:id="cmbPlanta" promptText="Planta"/>
+    <TextField fx:id="txtCapacidad" promptText="Capacidad"/>
+    <ComboBox fx:id="cmbTipoAula" promptText="Tipo de aula"/>
+    <TextField fx:id="txtResponsable" promptText="Responsable"/>
+    <ComboBox fx:id="cmbEstado" promptText="Estado"/>
+    <HBox spacing="10">
+        <Button text="Guardar" onAction="#guardar"/>
+        <Button text="Limpiar" onAction="#limpiar"/>
+        <Button text="Cerrar sesión" onAction="#cerrarSesion"/>
+    </HBox>
+</VBox>

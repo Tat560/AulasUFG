@@ -5,21 +5,19 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/aulas_ufg?createDatabaseIfNotExist=true&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC</property>
+        <!-- createDatabaseIfNotExist crea la BD "aulas_db" si no existe -->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/aulas_db?createDatabaseIfNotExist=true&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
-        <property name="hibernate.connection.pool_size">5</property>
 
-        <property name="hibernate.dialect">org.hibernate.dialect.MariaDBDialect</property>
-        <property name="jakarta.persistence.database-major-version">10</property>
-        <property name="jakarta.persistence.database-minor-version">4</property>
-
+        <!-- Crea/actualiza las tablas automaticamente a partir de las entidades -->
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.format_sql">true</property>
-        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.show_sql">false</property>
 
         <mapping class="edu.ufg.aulas.entidades.Usuario"/>
+        <mapping class="edu.ufg.aulas.entidades.TipoAula"/>
+        <mapping class="edu.ufg.aulas.entidades.EstadoAula"/>
+        <mapping class="edu.ufg.aulas.entidades.Planta"/>
         <mapping class="edu.ufg.aulas.entidades.Aula"/>
     </session-factory>
 </hibernate-configuration>
