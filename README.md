@@ -54,3 +54,10 @@ Para generar un proyecto: `mvn archetype:generate -DarchetypeCatalog=local`
 
 (groupId edu.ufg, artifactId AulasUFG, package edu.ufg.aulas).
 
+
+
+   ## Créditos
+   - Tatiana Ascencio (Tat560): Estructura base, controladores, arquetipo Maven, integración y documentación.
+   - Jorge (OGrusher): Configuración de Hibernate y conexión a la BD.
+   - Maryorie: Entidades.
+   - Walter: Clases de util.
